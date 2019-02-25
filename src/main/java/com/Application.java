@@ -6,6 +6,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.apache.commons.collections.Bag;
 import org.apache.commons.collections.bag.HashBag;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 public class Application {
@@ -27,6 +29,14 @@ public class Application {
 			bag.add("ONE", 6);
 			System.out.println("Doing something in MyBean");
 			System.out.println(bag);
+		}
+	}
+
+	@RestController
+	private static class TheController{
+		@RequestMapping("/rest")
+		public String handle(){
+			return "message from rest handler";
 		}
 	}
 }
